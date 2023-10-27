@@ -1,0 +1,4 @@
+CowFile = open ("ps1_cow_data.txt", "r")
+  for line in CowFile:
+      CowLine = "1"
+  print (CowLine)
