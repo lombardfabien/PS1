@@ -10,7 +10,7 @@ import time
 #================================
 # Part A: Transporting Space Cows
 #================================
-
+filename = input("what is the name of the file:")
 # Problem 1
 def load_cows(filename):
     """
@@ -59,7 +59,59 @@ def greedy_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
+#    limit =10
+    CowWeight = 0
+#    cows = CowDict
+    RemainingCows = cows.copy()
+    Trip = []
+    List = []
+    #if RemainingCows !="":
+    #    print (RemainingCows)
+    #print (RemainingCows[1])
+    def SortedList (dict):
+        Sorted = {}
+        UnSorted = dict.copy()
+        item = 0
+        i=0
+        while i < len(dict):
+                for c in UnSorted:
+                    if item < UnSorted.get(c):
+                        item = UnSorted.get(c)
+                        temp = c
+                Sorted[temp] = UnSorted.get(temp)
+                del UnSorted[temp]
+                item = 0
+                i+=1
+
+        return Sorted
+
+    while bool (RemainingCows):
+        SortedCows = SortedList (RemainingCows)
+#        print (SortedCows)
+        for c in SortedCows:
+            if CowWeight + SortedCows.get(c) > limit:
+                continue
+            else:
+                Trip.append(c)
+                CowWeight = RemainingCows.get(c) + CowWeight
+#                print (Trip)
+                del RemainingCows[c]
+
+        List.append(Trip)
+        Trip = []
+        CowWeight =0
+    #    print (Trip)
+    #    print (RemainingCows
+    #    print (len(List))
+    #    weight = 0
+    #    Trip = []
+    #    for c in cows:
+    #        cowsname = cows
+    #        weight = cows.get(c) + weight
+    #        if weight < limit:
+    #            List.append (c)
+                #cows.pop()
+    print (List)# TODO: Your code here
     pass
 
 # Problem 3
@@ -103,3 +155,5 @@ def compare_cow_transport_algorithms():
     """
     # TODO: Your code here
     pass
+cows = load_cows(filename)
+greedy_cow_transport(cows, 10)
