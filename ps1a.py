@@ -181,7 +181,19 @@ def compare_cow_transport_algorithms():
     # TODO: Your code here
     pass
 
-
+""""
+Load the text document in cows variable
+"""""
 cows = load_cows(filename)
+
+"""" Time and run Greedy algorithm """""
+start = time.time()
 greedy_cow_transport(cows, 10)
+end = time.time()
+print ("Greedy Cow Transport timer", end - start)
+
+""""Time and run brute force algorithm"""""
+start = time.time()
 brute_force_cow_transport(cows, 10)
+end = time.time()
+print ("Greedy Cow Transport timer", end - start)
