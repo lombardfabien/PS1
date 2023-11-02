@@ -137,6 +137,31 @@ def brute_force_cow_transport(cows,limit=10):
     trips
     """
     # TODO: Your code here
+    def ApprovedTrip(List,limit):
+        for item in List:
+            i = 0
+            weight = 0
+            while len(item) > i:
+                weight = cows.get(item[i]) + weight
+    #            print (weight)
+                i += 1
+                if weight > limit:
+                    return False
+        return True
+
+    AllSolution = []
+    FinalList =[]
+    for partition in get_partitions (cows):
+        Status = ApprovedTrip(partition,limit)
+        if Status == True:
+            AllSolution.append(partition)
+    print ("Brute force algorithm")
+    Finalist = AllSolution[0]
+    for item in AllSolution:
+        if len(item) < len(FinalList):
+            Finalist = item
+    print (Finalist)
+
     pass
 
 # Problem 4
@@ -155,5 +180,8 @@ def compare_cow_transport_algorithms():
     """
     # TODO: Your code here
     pass
+
+
 cows = load_cows(filename)
 greedy_cow_transport(cows, 10)
+brute_force_cow_transport(cows, 10)
